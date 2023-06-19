@@ -30,7 +30,7 @@ node{
 
 Build is done.
 
-LANDMARKTECH''', recipientProviders: [developers(), contributor(), upstreamDevelopers()], subject: 'Build Status', to: 'mylandmarktech@gmail.com'
+JUDE''', recipientProviders: [developers(), contributor(), upstreamDevelopers()], subject: 'Build Status', to: 'jokparaejesii@gmail.com'
   }
  */  
 }
