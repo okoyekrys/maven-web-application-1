@@ -1,7 +1,7 @@
 node{
     def mavenHome = tool name: 'maven3.9.2'
    stage('1.CodeClone'){
-     git credentialsId: 'gitHubCredentials', url: 'https://github.com/Judefabulous/maven-web-application'
+     git credentialsId: 'gitHubCredentials', url: 'https://github.com/okoyekrys/maven-web-application-1'
    }
    stage('2MavenBuild'){
     sh "${mavenHome}/bin/mvn package"
@@ -13,7 +13,7 @@ node{
     sh "${mavenHome}/bin/mvn deploy"
    }
    stage('5deploy2UAT'){
-       deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://172.31.82.247:8080/')], contextPath: null, war: 'target/*war'
+       deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://172.31.11.204:8080/')], contextPath: null, war: 'target/*war'
    }
    stage('6Manualapproval'){
        sh "echo 'Application is ready for review' "
@@ -22,13 +22,13 @@ node{
        }
    }
    stage('7deploy2Prod'){
-       deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://172.31.82.247:8080/')], contextPath: null, war: 'target/*war'
+       deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://172.31.11.204:8080/')], contextPath: null, war: 'target/*war'
    }       
    stage('8emailNotify'){
        emailext body: '''Hello Team,
 
 Build is done
 
-Jude''', recipientProviders: [contributor(), developers()], subject: 'Build status', to: 'jokparaejesi@yahoo.com'
+Christian''', recipientProviders: [contributor(), developers()], subject: 'Build status', to: 'okoyekrys@gmail.com'
 }
 }
