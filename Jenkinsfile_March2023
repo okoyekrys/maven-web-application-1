@@ -22,7 +22,7 @@ node{
        }
    }
    stage('7deploy2Prod'){
-       deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://172.31.11.204:8080/')], contextPath: null, war: 'target/*war'
+       deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://44.197.132.171:8080/')], contextPath: null, war: 'target/*war'
    }       
    stage('8emailNotify'){
        emailext body: '''Hello Team,
