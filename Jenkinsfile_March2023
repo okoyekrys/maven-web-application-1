@@ -24,11 +24,10 @@ node{
    stage('7deploy2Prod'){
        deploy adapters: [tomcat9(credentialsId: 'tomcat', path: '', url: 'http://44.197.132.171:8080/')], contextPath: null, war: 'target/*war'
    }       
-   stage('8emailNotify'){
-       emailext body: '''Hello Team,
+   stage('8emailNotify'){emailext body: '''Hello Team,
 
-Build is done
+Build is done.
 
-Christian''', recipientProviders: [contributor(), developers()], subject: 'Build status', to: 'okoyekrys@gmail.com'
+Christian''', recipientProviders: [contributor(), developers(), upstreamDevelopers()], subject: 'Build Staus', to: 'okoyekrys@gmail.com'
 }
 }
